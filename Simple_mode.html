@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Bettatech</title>
+<style>
+
+
+</style>
+</head>
+
+<body>
+    <input id="text" type="text">
+    <input id="submit" type="submit">
+    <div id="response"></div>
+
+<script>
+    let textEl = document.getElementById("text")
+    let submitEl = document.getElementById("submit")
+    let response = document.getElementById("response")
+    let arr = ["engatusado", "gatto", "gato", "perro"] // millón de palabras
+
+    function wordPredictor(word, words_set){
+        response.innerHTML = ""
+        let temp = []
+        words_set.map(v => {          
+            if(v.startsWith(word.toLowerCase())){
+                temp.push(v)
+            }
+        })
+        temp.length ? temp.map(v => 
+                response.innerHTML += v + " "
+            ) : response.innerHTML = "No se han encontrado coincidencias"
+    }
+    textEl.addEventListener("input", () => wordPredictor(textEl.value, arr))
+
+</script>
+</body>
+</html>
